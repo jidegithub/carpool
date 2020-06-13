@@ -7,7 +7,9 @@
         <router-link to="/chooseextra">Choose extra</router-link> |
         <router-link to="/reviewandbook">Review and book</router-link>
       </div>
-      <router-view/>
+      <div class="container mx-auto px-8">
+        <router-view/>
+      </div>
     </div>
   </Layout>
   

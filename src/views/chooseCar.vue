@@ -1,17 +1,19 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <P>HELLO from choose car</P>
+  <div>
+    <carSearchForm></carSearchForm>
   </div>
 </template>
 
 <script>
-
-
+import carSearchForm from "../components/carSearchForm"
 export default {
   name: 'choosecar',
   props: {
-    msg: String,
+   
+  },
+  components:{
+    carSearchForm
+
   },
   data() {
     return {
