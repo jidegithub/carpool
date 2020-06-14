@@ -26,9 +26,8 @@
           ></datepicker>
         </div>
 
-        <div class="w-full mt-7 md:w-1/5 pr-3">
-          <timeselector v-model="searchCarForm.pickUpDateTimeValue" :placeholder="'10:00'"></timeselector>
-          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="10:00">
+        <div class="w-full mt-10 md:w-1/3">
+          <timeselector v-model="searchCarForm.pickUpDateTimeValue" :h24="false" :placeholder="'10:00'"></timeselector>
         </div>
 
         <div class="w-full md:w-2/5 px-3">
@@ -43,9 +42,8 @@
           ></datepicker>
         </div>
 
-        <div class="w-full mt-7 md:w-1/5 pr-3">
-        <timeselector v-model="searchCarForm.dropOffDateTimeValue" :placeholder="'10:00'"></timeselector>
-          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="10:00">
+        <div class="w-full mt-10 md:w-1/3">
+          <timeselector v-model="searchCarForm.dropOffDateTimeValue" :h24="false" :placeholder="'10:00'"></timeselector>
         </div>
 
         <div class="w-full md:w-4/12 px-3 mb-6 md:mb-0">
@@ -53,7 +51,7 @@
             car type
           </label>
           <div class="relative">
-            <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8  leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="cartype">
+            <select v-model="searchCarForm.carType" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="cartype">
               <option>standard</option>
               <option>premium</option>
               <option>mid</option>
@@ -64,7 +62,7 @@
           </div>
         </div>
 
-        <div class="w-full md:w-4/12 mt-7 md:mb-0">
+        <div class="w-full md:w-4/12 mt-6 md:mb-0">
           <button class="bg-blue-500 hover:bg-blue-700 w-full text-white font-bold form-btn-pd px-4">
             Update
           </button>
@@ -90,7 +88,7 @@ export default {
         pickUpDateTimeValue: new Date(),
         dropOffDate: "",
         dropOffDateTimeValue: new Date(),
-        
+        carType: ""
       }
     }
   }
@@ -102,8 +100,8 @@ export default {
     margin-top: 26px;
   }
   .form-btn-pd{
-    padding-top: 0.8rem;
-    padding-bottom: 0.6rem;
+    padding-top: 0.79rem;
+    padding-bottom: 0.79rem;
   }
    .select-list{
     display: flex;
