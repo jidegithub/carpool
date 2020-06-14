@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full">
+  <div class="w-full p-6 shadow-md border-t-4 border-blue-900">
     <div class="text-left">
       <p>Search for a Car</p>
     </div>
@@ -18,14 +18,16 @@
           <label class=" flex block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="pkup-date">
             pick-up date
           </label>
-          
-          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="pkup-date" type="text" placeholder="12-10-2012">
+          <datepicker
+          id="pkup-date"
+          placeholder="12-10-2012"
+          v-model="searchCarForm.pickUpDate"
+          class="appearance-none block w-full text-gray-700 border border-gray-200 py-3 pl-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          ></datepicker>
         </div>
 
-        <div class="w-full mt-7 md:w-1/5 px-3">
-          <!-- <label class=" flex block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-            time
-          </label> -->
+        <div class="w-full mt-7 md:w-1/5 pr-3">
+          <timeselector v-model="searchCarForm.pickUpDateTimeValue" :placeholder="'10:00'"></timeselector>
           <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="10:00">
         </div>
 
@@ -33,13 +35,16 @@
           <label class=" flex block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="drup-date">
             drop-off date
           </label>
-          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="drup-date" type="text" placeholder="12-10-2012">
+          <datepicker
+          id="pkup-date"
+          placeholder="12-10-2012"
+          v-model="searchCarForm.dropOffDate"
+          class="appearance-none block w-full text-gray-700 border border-gray-200 py-3 pl-2 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          ></datepicker>
         </div>
 
-        <div class="w-full mt-7 md:w-1/5 px-3">
-          <!-- <label class=" flex block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-           time
-          </label> -->
+        <div class="w-full mt-7 md:w-1/5 pr-3">
+        <timeselector v-model="searchCarForm.dropOffDateTimeValue" :placeholder="'10:00'"></timeselector>
           <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="10:00">
         </div>
 
@@ -71,14 +76,22 @@
 
 <script>
 import Datepicker from 'vuejs-datepicker';
+import Timeselector from 'vue-timeselector';
 export default {
   name: "carsearchform",
   components: {
-    Datepicker
+    Datepicker,
+    Timeselector
   },
   data(){
     return{
-      pickupDate: ""
+      searchCarForm:{
+        pickUpDate: "",
+        pickUpDateTimeValue: new Date(),
+        dropOffDate: "",
+        dropOffDateTimeValue: new Date(),
+        
+      }
     }
   }
 }
@@ -91,6 +104,9 @@ export default {
   .form-btn-pd{
     padding-top: 0.8rem;
     padding-bottom: 0.6rem;
+  }
+   .select-list{
+    display: flex;
   }
 
 </style>
