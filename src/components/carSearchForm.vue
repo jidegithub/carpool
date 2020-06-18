@@ -1,16 +1,23 @@
 <template>
-  <div class="w-full p-6 shadow-md border-t-4 border-blue-900">
+  <div class="w-full py-6 px-5 shadow-md border-t-4 border-blue-900">
     <div class="text-left">
-      <p>Search for a Car</p>
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" class="search-icon-mg inline icon icon-tabler icon-tabler-search" width="14" height="14" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z"/>
+          <circle cx="10" cy="10" r="7"/>
+          <line x1="21" y1="21" x2="15" y2="15"/>
+        </svg>
+        <span>Search for a Car</span>
+      </p>
     </div>
-    <form class="w-full mt-10">
+    <form class="w-full mt-8">
       <div class="flex mb-6">
 
         <div class="w-full md:w-3/4 pr-3 mb-6 md:mb-0">
           <label class=" flex block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="location">
             location
           </label>
-          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="location" type="text" placeholder="Lagos, NGA">
+          <input v-model="searchCarForm.location" class="appearance-none block w-full bg-gray-200 text-gray-700 border py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="location" type="text" placeholder="Lagos, NGA">
           <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
         </div>
 
@@ -26,8 +33,8 @@
           ></datepicker>
         </div>
 
-        <div class="w-full mt-10 md:w-1/3">
-          <timeselector v-model="searchCarForm.pickUpDateTimeValue" :h24="false" :placeholder="'10:00'"></timeselector>
+        <div class="w-full form-time-input-mg md:w-1/3">
+          <timeselector v-model="searchCarForm.pickUpDateTimeValue" :h24="false" :placeholder="'10:00'" class="text-gray-700 border form-time-input-pd px-4"></timeselector>
         </div>
 
         <div class="w-full md:w-2/5 px-3">
@@ -42,8 +49,8 @@
           ></datepicker>
         </div>
 
-        <div class="w-full mt-10 md:w-1/3">
-          <timeselector v-model="searchCarForm.dropOffDateTimeValue" :h24="false" :placeholder="'10:00'"></timeselector>
+        <div class="w-full form-time-input-mg md:w-1/3">
+          <timeselector v-model="searchCarForm.dropOffDateTimeValue" :h24="false" :placeholder="'10:00'" class="text-gray-700 border form-time-input-pd px-4"></timeselector>
         </div>
 
         <div class="w-full md:w-4/12 px-3 mb-6 md:mb-0">
@@ -63,8 +70,12 @@
         </div>
 
         <div class="w-full md:w-4/12 mt-6 md:mb-0">
-          <button class="bg-blue-500 hover:bg-blue-700 w-full text-white font-bold form-btn-pd px-4">
-            Update
+          <button @click.prevent="searchCar" class=" inline-flex bg-blue-500 hover:bg-blue-700 w-full text-white font-bold form-btn-pd px-4">
+            <span>Update</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="inline mt-1 ml-1 icon icon-tabler icon-tabler-rotate" width="15" height="15" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z"/>
+              <path d="M19.95 11a8 8 0 1 0 -.5 4m.5 5v-5h-5"/>
+            </svg> 
           </button>
         </div>
       </div>
@@ -84,6 +95,7 @@ export default {
   data(){
     return{
       searchCarForm:{
+        location: "",
         pickUpDate: "",
         pickUpDateTimeValue: new Date(),
         dropOffDate: "",
@@ -91,11 +103,20 @@ export default {
         carType: ""
       }
     }
+  },
+  methods:{
+    searchCar(){
+      console.log(this.searchCarForm)
+    }
   }
 }
 </script>
 
 <style>
+.search-icon-mg{
+  margin-bottom: 4px;
+  margin-right: 4px;
+}
   .mt-7{
     margin-top: 26px;
   }
@@ -103,8 +124,14 @@ export default {
     padding-top: 0.79rem;
     padding-bottom: 0.79rem;
   }
-   .select-list{
+  .select-list{
     display: flex;
+  }
+  .form-time-input-pd{
+    padding: 10px 8px;
+  }
+  .form-time-input-mg{
+    margin-top: 26px;
   }
 
 </style>
