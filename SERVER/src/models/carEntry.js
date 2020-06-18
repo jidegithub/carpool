@@ -20,7 +20,8 @@ const CarEntrySchema = new Schema({
     required: true,
     type: Date,
   },
-  carType: String
+  carType: String,
+  returnAtDifferentLocation: Boolean
 },
   {
     timestamps: true

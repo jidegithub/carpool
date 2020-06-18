@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root{
+  --base-color: #021F35;
+  --base-color-light: #1991EB;
+  --input-box-width: 400px;
+  --input-box-height: 30px;
+  --package-type-form-input-box-width: 278px;
+  --package-type-form-input-box-height: 26px; 
+  --submit-button-height: 40px;
+  --primary-color: #003358;
+  --warning-color: #c53030;
+  --error-red-bg: #F6E7E7;
+  --error-red-text:#A81414;
+  --subheading-color: #8099AC;
+}
+
+.text-brand{
+  color: var(--base-color);
+  fill: var(--base-color);
+}
+.text-brand-light{
+  color: var(--base-color-light);
+}
+.bg-brand{
+  background-color: var(--base-color);
+}
+
