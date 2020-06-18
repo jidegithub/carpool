@@ -11,7 +11,8 @@ const cars = require('./api/cars')
 
 mongoose.connect(process.env.LOCAL_DATABASE_URL, {
   useUnifiedTopology: true,
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useFindAndModify: false 
 })
 
 const app = express();
