@@ -1,6 +1,6 @@
 const { Router } = require('express');
 
-// const LogEntry = require('../models/LogEntry');
+const CarEntry = require('../models/carEntry');
 
 const router = Router();
 
