@@ -1,18 +1,22 @@
 <template>
   <div>
     <carSearchForm></carSearchForm>
+    <sidebar></sidebar>
   </div>
 </template>
 
 <script>
 import carSearchForm from "../components/carSearchForm"
+import Sidebar from "../components/Sidebar"
 export default {
   name: 'choosecar',
   props: {
    
   },
   components:{
-    carSearchForm
+    carSearchForm,
+    Sidebar,
+    
 
   },
   data() {
