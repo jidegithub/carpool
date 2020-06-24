@@ -3,8 +3,8 @@ const { Schema } = mongoose;
 const carDetails = require('./carDetails').schema
 
 const CarCollectionSchema = new Schema({
-  name: String,
-  type: String,
+  manufacturer: String,
+  model: String,
   image: String,
   category: String,
   price: Number,
