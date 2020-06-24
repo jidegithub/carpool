@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const CarDetailsSchema = new Schema({
-  passengerCapacity: Number,
+  passengerCapacity: {
+    default: 0,
+    type: Number,
+  },
   largeSuitCaseCapacity: {
     default: 0,
     type: Number,
@@ -25,7 +28,7 @@ const CarDetailsSchema = new Schema({
   systemDisplayType: String,
   hasStabiltyControl: {
     default: false,
-    type: Number,
+    type: Boolean,
   },
   hasHillStartAssistControl: {
     default: false,
