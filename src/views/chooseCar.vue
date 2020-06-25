@@ -2,12 +2,14 @@
   <div>
     <carSearchForm></carSearchForm>
     <sidebar></sidebar>
+    <carResult></carResult>
   </div>
 </template>
 
 <script>
 import carSearchForm from "../components/carSearchForm"
 import Sidebar from "../components/Sidebar"
+import carResult from "../components/carResult"
 export default {
   name: 'choosecar',
   props: {
@@ -16,6 +18,7 @@ export default {
   components:{
     carSearchForm,
     Sidebar,
+    carResult
     
 
   },
