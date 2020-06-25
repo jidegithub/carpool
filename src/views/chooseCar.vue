@@ -1,8 +1,10 @@
 <template>
   <div>
     <carSearchForm></carSearchForm>
+    <div class="car-details">
     <sidebar></sidebar>
     <carResult></carResult>
+    </div>
   </div>
 </template>
 
@@ -46,4 +48,9 @@ li {
 a {
   color: #42b983;
 }
+
+.car-details {
+  display: flex;
+}
+
 </style>
