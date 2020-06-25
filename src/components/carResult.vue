@@ -1,6 +1,7 @@
 <template>
-    <div class="max-w-sm w-full lg:max-w-full lg:flex">
-  <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('/img/card-left.jpg')" title="Woman holding a mug">
+<main id="car-result">
+    <div class=" car-result-block max-w-sm w-full lg:max-w-full lg:flex">
+  <div class="h-48 lg:h-auto flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('/img/card-left.jpg')" title="Woman holding a mug">
   </div>
   <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
     <div class="mb-8">
@@ -22,4 +23,18 @@
     </div>
   </div>
 </div>
+</main>
 </template>
+<script>
+export default {
+  
+}
+</script>
+
+<style scoped>
+#car-result .car-result-block {
+  width: 56rem;
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
+</style>
