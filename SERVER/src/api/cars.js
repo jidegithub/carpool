@@ -4,37 +4,67 @@ const CarCollection = require('../models/carCollections');
 
 const router = Router();
 
-// router.get('/', async (req, res, next) => {
-//   try {
-//     const cars = await CarCollection.find()
-//     const totalCars = await CarCollection.countDocuments()
-//     // cars.unshift({"totalCars": totalCars})
-//     res.json(cars);
-//   } catch (error) {
-//     next(error);
-//   }
-// });
-
 router.get('/', async (req, res, next) => {
-  // let priceRange = req.query.price;
-  // let name = req.query.name;
-  // let passengerCapacityRange = req.query.passengerCapacityRange;
-  // let category = req.query.category;
+  try {
+    const cars = await CarCollection.find()
+    const totalCars = await CarCollection.countDocuments()
+    // cars.unshift({"totalCars": totalCars})
+    res.json(cars);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get('/search', async (req, res, next) => {
+  let priceRange = req.query.price
+  let name = req.query.name;
+  let passengerCapacityRange = req.query.passengerCapacity;
+  let category = req.query.category;
+
+  if(name){
+    if(name.split(",").length >= 1){
+      name = name.split(",").map((e) => new RegExp(e, "i"))
+    }
+  }
+
+  if (category) {
+    if (category.split(",").length >= 1) {
+      category = category.split(",").map((e) => new RegExp(e, "i"))
+    }
+  }
+
+  if (passengerCapacityRange) {
+    if (passengerCapacityRange.split(",").length >= 1) {
+      passengerCapacityRange = passengerCapacityRange.split(",")
+    }
+  }
+
+  if (priceRange) {
+    if (priceRange.split(",").length >= 1) {
+      priceRange = priceRange.split(",")
+    }
+  }
 
   const filters = {
-    priceRange: Number(req.query.price),
-    name: req.query.name,
-    passengerCapacityRange: Number(req.query.passengerCapacity),
-    category: req.query.category === undefined ? req.query.category = "" : req.query.category
+    priceRange: priceRange,
+    name: name,
+    passengerCapacityRange: passengerCapacityRange,
+    category: category
   }
 
   console.log(filters)
   try {
     const cars = await CarCollection.find({
-      'name': { '$regex': filters.name, "$options": "i" }, 
-      'price': { $gte: filters.priceRange },
-      'passengerCapacity': { $gte: filters.passengerCapacityRange},
-      'category': `${filters.category}`
+      'name': {"$in": filters.name }, 
+      'price': { 
+        $gt: Number(filters.priceRange[0]), 
+        $lte: Number(filters.priceRange[1])
+      },
+      'details.passengerCapacity': { 
+        $gt: Number(filters.passengerCapacityRange[0]), 
+        $lte: Number(filters.passengerCapacityRange[1])
+      },
+      'category': {"$in": filters.category}
     })
     const totalCars = cars.length
     res.json({totalCars, cars});
@@ -42,8 +72,6 @@ router.get('/', async (req, res, next) => {
     next(error);
   }
 });
-
-
 
 router.get('/:id', async (req, res, next) => {
   try {
